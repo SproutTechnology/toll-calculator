@@ -1,0 +1,41 @@
+# Fredrik Grääs' Toll Calculator Implementation
+
+A calculator for vehicle toll fees. I've created two parts - a backend/API which logs and calculates fees for Vehicles, and a frontend that than query the backend to search for vehicles as well as view a realtime log of vehicles driving through the toll.
+To populate the realtime view, I also created a small Vehicle Simulator which posts faked vehicles to the API.
+
+## Instructions
+
+Start by cloning the Project and navigate to the Javascript folder.
+From there, enter the frontend folder and run:
+
+´npm install && npm run build´
+
+To create a production version of the frontend code. This can then be served through the backend which also serves as a simple webserver. To start the server, head to the backend folder and run:
+
+´npm install && node app.js´
+
+Then visit ´http://localhost´ to view the Frontend "admin" interface.
+
+This does hoever require that you have a somewhat recent version of NodeJs installed.
+I had originally planned on creating a Dockerfile/Docker-Compose script to run both front- and backends without any local dependencies (other than Docker), but ran out of time ( due to "vabbuari" & sick kids... ). I'd also have liked to spend a few more hours on the Admin UI, but it serves its purpose as a MVP.
+
+
+## "Vehicle Simulator"
+
+The Vehicle Simulator can equally be run by calling:
+
+´node VehicleSimulator.js´
+
+from within the backend folder, and will start creating POST requests to the API every couple of seconds (on random).
+
+## API Routes
+
+The API has three routes:
+
+´/´ - (GET) - The route that leverages the VueJs frontend to the browser.
+
+´/tollEvents´ - (GET) - Route to fetch all registered toll Events as Json.
+
+´/vehicle/:regn´ - (GET) - Fetches information about a vechile based on its registration number.
+
+´/vehicleToll´ - (POST) - Post a toll event for a vehicle. Requires type and regnr as post parameters (body). All toll events posted will also trigger a Websocket Event, which syncs with the "realtime" view in the frontend.
