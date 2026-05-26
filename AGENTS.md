@@ -1,12 +1,15 @@
 # Repository Guidelines
 
-## Coding Style & Naming Conventions
+## Skill Routing
 
-Follow the style of the language being edited.
+Use repo-specific skills instead of loading all guidance on every request:
 
-- Java: use PascalCase class names, camelCase methods and variables, and 2-space indentation in existing files.
-- C#: use PascalCase public methods and types, camelCase locals, and 4-space indentation.
-- Prefer clear rule extraction over adding more nested conditionals to toll calculation logic.
+- `toll-calculator-repo`: repository organization, commits, pull requests, and cross-language coordination.
+- `toll-calculator-java-jdk`: Java/JDK work under `Java/`.
+- `toll-calculator-csharp-dotnet`: C#/.NET work under `C#/`.
+- `toll-calculator-testing`: tests, edge cases, and toll behavior validation.
+
+Prefer the most specific skill for the task. Use multiple skills only when the task genuinely crosses boundaries, such as changing toll behavior in both Java and C# and adding tests.
 
 ## Commit & Pull Request Guidelines
 
